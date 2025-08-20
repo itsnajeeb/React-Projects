@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react'
-import TodoDispatchContext from '../../reducer/TodoDispatchContext'
-export const AddTodo = () => {
-    const {  dispatch } = useContext(TodoDispatchContext)
+import React, { useState } from 'react'
+
+export const AddTodo = ({addTodo}) => {
     const [inputText, setInputText] = useState('')
     return (
         <div>
@@ -13,7 +12,10 @@ export const AddTodo = () => {
                 }
 
             />
-            <button onClick={() => dispatch({ type: 'add_todo', payload: { todoText: inputText } })}>Add</button>
+            <button onClick={() => {
+                addTodo(inputText),
+                setInputText("")
+            }}>Add</button>
         </div>
     )
 }

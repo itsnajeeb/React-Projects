@@ -1,22 +1,19 @@
-import React, { useContext } from 'react'
 import { Todo } from '../Todo/Todo'
-import TodoContext from '../../context/TodoContext'
-import TodoDispatchContext from '../../reducer/TodoDispatchContext';
+import {  useSelector } from 'react-redux'
 
-export const TodoList = () => {
-    const { list } = useContext(TodoContext);
-    const { dispatch } = useContext(TodoDispatchContext);
+export const TodoList = ({ deleteTodo, editTodo, todoFinished }) => {
+    const list = useSelector((state) => state.todo)
 
     function onFinished(todo, isFinished) {
-        dispatch({ type: 'finished_todo', payload: { todo, isFinished } })
+        todoFinished(todo, isFinished)
     }
 
     function onDelete(todo) {
-        dispatch({ type: 'delete_todo', payload: { todo } })
+        deleteTodo(todo)
     }
 
     function onEdit(todo, todoText) {
-        dispatch({ type: 'edit_todo', payload: { todo, todoText } })
+        editTodo(todo, todoText)
     }
 
 

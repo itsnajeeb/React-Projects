@@ -1,4 +1,4 @@
-function todoReducer(state, action) {
+function todoReducer(state = [], action) {
     // console.log("ACTION > ", action);
     // console.log("STATE > ", state);
 

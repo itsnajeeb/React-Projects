@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import TodoContext from '../../context/TodoContext';
 
 export const Todo = ({ todoData, isFinished, changeFinished, onDelete,onEdit }) => {
     const [finished, setFinished] = useState(isFinished)
